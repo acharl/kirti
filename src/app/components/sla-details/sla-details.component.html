@@ -1,0 +1,419 @@
+<ion-content>
+  <ng-container>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>{{ service.providerName }}</ion-card-subtitle>
+        <ion-card-title color="primary" class="font--weight__bold"
+          >{{ service.serviceName }}
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-item>
+        <ion-icon name="cash" slot="start"></ion-icon>
+        <ion-label>
+          <p>
+            Leasing Period:
+            <ion-text color="secondary" class="font--weight__bold"
+              >{{ service.validityPeriod }} Days</ion-text
+            >
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="alarm" slot="start"></ion-icon>
+        <ion-label>
+          <p>
+            Time to mitigate:
+            <ion-text color="secondary" class="font--weight__bold">{{
+              service.slaDetails.timeToMitigate | minutes
+            }}</ion-text>
+          </p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item class="ion-activated">
+        <ion-icon name="cloud-done" slot="start"></ion-icon>
+        <ion-label>
+          <p>
+            Service availability:
+            <ion-text color="secondary" class="font--weight__bold">{{
+              service.slaDetails.serviceAvailability | percentage
+            }}</ion-text>
+          </p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="bar-chart" slot="start"></ion-icon>
+        <ion-label>
+          <p>
+            Mitigation Efficiency:
+            <ion-text color="secondary" class="font--weight__bold">{{
+              service.slaDetails.mitigationEfficiency | percentage
+            }}</ion-text>
+          </p>
+        </ion-label>
+      </ion-item>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-text color="secondary" class="font--weight__bold ion-ion-text"
+            >TIME TO MITIGATE</ion-text
+          >
+        </ion-card-header>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-text> </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text color="danger">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  HIGH
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text color="warning">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  MEDIUM
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text color="success">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  LOW
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p>
+                  Compensation
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  {{ service.slaDetails.compensationPercentages[0] }} %
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  {{ service.slaDetails.compensationPercentages[1] }} %
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  {{ service.slaDetails.compensationPercentages[2] }} %
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p>
+                  Threshold
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  > {{ service.slaDetails.violationThresholds[0] }}min
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  > {{ service.slaDetails.violationThresholds[1] }}min
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  > {{ service.slaDetails.violationThresholds[2] }}min
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-text color="secondary" class="font--weight__bold"
+            >SERVICE AVAILABILITY</ion-text
+          >
+        </ion-card-header>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-text> </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text color="danger">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  HIGH
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text color="warning">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  MEDIUM
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text color="success">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  LOW
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="ion-no-margin ion-ion-text">
+                  Compensation
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  {{ service.slaDetails.compensationPercentages[3] }} %
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  {{ service.slaDetails.compensationPercentages[4] }} %
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  {{ service.slaDetails.compensationPercentages[5] }} %
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="ion-no-margin ion-ion-text">
+                  Threshold
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  < {{ service.slaDetails.violationThresholds[3] }}%
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  < {{ service.slaDetails.violationThresholds[4] }}%
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  < {{ service.slaDetails.violationThresholds[5] }}%
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-text color="secondary" class="font--weight__bold"
+            >MITIGATION EFFICIENCY</ion-text
+          >
+        </ion-card-header>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-text> </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text color="danger">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  HIGH
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text color="warning">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  MEDIUM
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text color="success">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  LOW
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="ion-no-margin ion-ion-text">
+                  Compensation
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  {{ service.slaDetails.compensationPercentages[6] }} %
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  {{ service.slaDetails.compensationPercentages[7] }} %
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  {{ service.slaDetails.compensationPercentages[8] }} %
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="ion-no-margin ion-ion-text">
+                  Threshold
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  < {{ service.slaDetails.violationThresholds[6] }}%
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  < {{ service.slaDetails.violationThresholds[7] }}%
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-text>
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  < {{ service.slaDetails.violationThresholds[8] }}%
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-card>
+  </ng-container>
+</ion-content>

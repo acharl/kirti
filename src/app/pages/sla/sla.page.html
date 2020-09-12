@@ -1,0 +1,141 @@
+<ion-content>
+  <ng-container *ngIf="myContracts !== undefined && myContracts.length > 0">
+    <ng-container *ngFor="let contract of myContracts">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle
+            >{{contract.service.providerName}}</ion-card-subtitle
+          >
+          <ion-card-title color="secondary"
+            >{{contract.service.serviceName}}</ion-card-title
+          >
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>
+            SLA Contract at
+            <ion-text color="dark" class="font--weight__bold"
+              >{{contract.web3ContractInstance._address}}</ion-text
+            >
+          </p>
+
+          <p *ngIf="contract.monitorAddress">
+            Monitor:
+            <ion-text color="dark" class="font--weight__bold"
+              >{{contract.monitorAddress}}</ion-text
+            >
+          </p>
+
+          <ion-card>
+            <ion-card-content>
+              <ion-text color="secondary">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  Current State
+                </p>
+              </ion-text>
+            </ion-card-content>
+            <ng-container *ngIf="contract.state">
+              <ion-item class="ion-activated">
+                <ion-icon name="checkmark" slot="start"></ion-icon>
+                <ion-label>
+                  <p>
+                    activated:
+                    <ion-text color="success" class="font--weight__bold"
+                      >{{contract.state.isActivated}}</ion-text
+                    >
+                  </p>
+                </ion-label>
+              </ion-item>
+
+              <ion-item class="ion-activated">
+                <ion-icon name="checkmark-done" slot="start"></ion-icon>
+                <ion-label>
+                  <p>
+                    terminated:
+                    <ion-text color="danger" class="font--weight__bold"
+                      >{{contract.state.isTerminated}}</ion-text
+                    >
+                  </p>
+                </ion-label>
+              </ion-item>
+
+              <ion-item class="ion-activated">
+                <ion-icon name="cash" slot="start"></ion-icon>
+                <ion-label>
+                  <p>
+                    current compensation:
+                    <ion-text color="dark" class="font--weight__bold"
+                      >{{contract.state.currentCompensation |
+                      compensation}}</ion-text
+                    >
+                  </p>
+                </ion-label>
+              </ion-item>
+
+              <ion-item class="ion-activated">
+                <ion-icon name="warning" slot="start"></ion-icon>
+                <ion-label>
+                  <p>
+                    violation count:
+                    <ion-text color="dark" class="font--weight__bold"
+                      >{{contract.state.violationCount}}</ion-text
+                    >
+                  </p>
+                </ion-label>
+              </ion-item>
+            </ng-container>
+
+            <ng-container *ngIf="contract.validityObject">
+              <ion-item class="ion-activated">
+                <ion-icon name="alarm" slot="start"></ion-icon>
+                <ion-label>
+                  <p>
+                    created:
+                    <ion-text color="secondary" class="font--weight__bold"
+                      >{{contract.validityObject.createdAt | date:"dd/MM 'at '
+                      h:mma"}}</ion-text
+                    >
+                  </p>
+                </ion-label>
+              </ion-item>
+
+              <ion-item class="ion-activated">
+                <ion-icon name="hourglass" slot="start"></ion-icon>
+                <ion-label>
+                  <p>
+                    expires:
+                    <ion-text color="secondary" class="font--weight__bold"
+                      >{{contract.validityObject.expiresAt | date:"dd/MM 'at '
+                      h:mma"}}</ion-text
+                    >
+                  </p>
+                </ion-label>
+              </ion-item>
+
+              <!-- <ion-item class="ion-activated">
+                <ion-icon name="hourglass" slot="start"></ion-icon>
+                <ion-label
+                  >Monitor {{contract.validityObject.monitor }}</ion-label
+                >
+              </ion-item> -->
+            </ng-container>
+          </ion-card>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="myContracts !== undefined ">
+    <ng-container *ngIf="myContracts.length === 0">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Nothing here ... </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          You currently have no SLAs
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ng-container>
+</ion-content>

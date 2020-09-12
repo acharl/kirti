@@ -1,0 +1,427 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="secondary">Service Upload</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p color="primary">
+        Here you have the possibility to enter your service details and make it
+        available for customers
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <form [formGroup]="uploadForm">
+    <ion-row>
+      <ion-col
+        ><ion-card>
+          <ion-card-content>
+            <ion-text color="secondary">
+              <p class="font--weight__bold ion-no-margin ion-ion-text">
+                Personal
+              </p>
+            </ion-text>
+          </ion-card-content>
+
+          <ion-item>
+            <ion-label position="floating">Service Name </ion-label>
+            <ion-input formControlName="serviceName"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Provider Name</ion-label>
+            <ion-input formControlName="providerName"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Provider Address</ion-label>
+            <ion-input formControlName="providerAddress"></ion-input>
+          </ion-item> </ion-card
+      ></ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <ion-text color="secondary">
+              <p class="font--weight__bold ion-no-margin ion-ion-text">
+                General
+              </p>
+            </ion-text>
+          </ion-card-content>
+
+          <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-input formControlName="description"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Price (Ether)</ion-label>
+            <ion-input formControlName="price"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Leasing Period (days)</ion-label>
+            <ion-input formControlName="validityPeriod"></ion-input>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-text color="secondary">
+          <p class="font--weight__bold ion-no-margin ion-ion-text">
+            SLA Details
+          </p>
+        </ion-text>
+        <ion-text>
+          For each of the metrics, enter the cumulative compensation percentage
+          for a violation of high, medium, or low severity. Additionally specify
+          the treshold value for which a violation is considered to be of the
+          respective severity
+        </ion-text>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col size="4">
+          <ion-item>
+            <ion-text color="secondary">
+              <p class="font--weight__bold ion-no-margin ion-ion-text">
+                METRIC
+              </p>
+            </ion-text>
+          </ion-item> </ion-col
+        ><ion-col>
+          <ion-item>
+            <ion-text color="danger">
+              <p class="font--weight__bold ion-no-margin ion-ion-text">HIGH</p>
+            </ion-text>
+          </ion-item> </ion-col
+        ><ion-col>
+          <ion-item>
+            <ion-text color="warning">
+              <p class="font--weight__bold ion-no-margin ion-ion-text">
+                MEDIUM
+              </p>
+            </ion-text>
+          </ion-item> </ion-col
+        ><ion-col>
+          <ion-item>
+            <ion-text color="success">
+              <p class="font--weight__bold ion-no-margin ion-ion-text">LOW</p>
+            </ion-text>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <ion-row>
+            <ion-item>
+              <ion-label position="stacked">Time to Mitigate (mins)</ion-label>
+              <ion-input formControlName="timeToMitigate"></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-text color="primary">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  Threshold:
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+
+        <ion-col>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="primary">
+                  <p class="font--weight__bold">%</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="timeToMitigateHIGHPercentage"
+              ></ion-input>
+            </ion-item> </ion-row
+          ><ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="secondary">
+                  <p class="font--weight__bold">> ... mins</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="timeToMitigateHIGHThreshold"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="primary">
+                  <p class="font--weight__bold">%</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="timeToMitigateMEDIUMPercentage"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="secondary">
+                  <p class="font--weight__bold">> ... mins</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="timeToMitigateMEDIUMThreshold"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="primary">
+                  <p class="font--weight__bold">%</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="timeToMitigateLOWPercentage"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="secondary">
+                  <p class="font--weight__bold">> ... mins</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="timeToMitigateLOWThreshold"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <ion-row>
+            <ion-item>
+              <ion-label position="stacked"
+                >Mitigation Efficiency (%)</ion-label
+              >
+              <ion-input formControlName="timeToMitigate"></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-text color="primary">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  Threshold:
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+
+        <ion-col>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="primary">
+                  <p class="font--weight__bold">%</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="mitigationEfficiencyHIGHPercentage"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="secondary">
+                  <p class="font--weight__bold">< ... %</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="mitigationEfficiencyHIGHThreshold"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="primary">
+                  <p class="font--weight__bold">%</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="mitigationEfficiencyMEDIUMPercentage"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="secondary">
+                  <p class="font--weight__bold">< ... %</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="mitigationEfficiencyMEDIUMThreshold"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="primary">
+                  <p class="font--weight__bold">%</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="mitigationEfficiencyLOWPercentage"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="secondary">
+                  <p class="font--weight__bold">< ... %</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="mitigationEfficiencyLOWThreshold"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="4">
+          <ion-row>
+            <ion-item>
+              <ion-label position="stacked">Service Availability (%)</ion-label>
+              <ion-input formControlName="timeToMitigate"></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-text color="primary">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  Threshold:
+                </p>
+              </ion-text>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+
+        <ion-col>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="primary">
+                  <p class="font--weight__bold">%</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="serviceAvailabilityHIGHPercentage"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="secondary">
+                  <p class="font--weight__bold">< ... %</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="serviceAvailabilityHIGHThreshold"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="primary">
+                  <p class="font--weight__bold">%</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="serviceAvailabilityMEDIUMPercentage"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="secondary">
+                  <p class="font--weight__bold">< ... %</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="serviceAvailabilityMEDIUMThreshold"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="primary">
+                  <p class="font--weight__bold">%</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="serviceAvailabilityLOWPercentage"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-label position="floating">
+                <ion-text color="secondary">
+                  <p class="font--weight__bold">< ... %</p>
+                </ion-text>
+              </ion-label>
+              <ion-input
+                formControlName="serviceAvailabilityLOWThreshold"
+              ></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <div class="ion-padding">
+      <ion-button
+        expand="block"
+        type="submit"
+        class="ion-no-margin"
+        color="secondary"
+        (click)="uploadService()"
+        >Upload Service</ion-button
+      >
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,18 @@
+{
+  "newService": {
+    "serviceName": "Awawai Web Application Protector",
+    "providerName": "Awawai Technologies",
+    "providerAddress": "0x07Ee55aA48Bb72DcC6E9D78256648910De513eca",
+    "description": "Web Application Protector offers automated WAF and DDoS protections dedicated to securing you web applications",
+    "price": "3",
+    "validityPeriod": "11",
+    "slaDetails": {
+      "timeToMitigate": "30",
+      "mitigationEfficiency": 9900,
+      "serviceAvailability": 9990,
+      "compensationPercentages": [50, 35, 20, 50, 40, 30, 40, 25, 10],
+      "violationThresholds": [90, 60, 40, 60, 80, 90, 95, 97, 99]
+    }
+  },
+  "providerAddress": "0x07Ee55aA48Bb72DcC6E9D78256648910De513eca"
+}

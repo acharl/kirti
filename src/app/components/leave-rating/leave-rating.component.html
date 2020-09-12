@@ -1,0 +1,82 @@
+<ion-buttons slot="end">
+  <ion-button (click)="dismiss()" fill="clear" color="secondary" float-right>
+    <ion-icon name="close" slot="icon-only"></ion-icon>
+  </ion-button>
+</ion-buttons>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title>
+        <p>
+          <ion-text color="secondary" class="font--weight__bold">{{
+            service.serviceName
+          }}</ion-text>
+
+          by
+          <ion-text color="secondary" class="font--weight__bold">{{
+            service.providerName
+          }}</ion-text>
+        </p>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content> Just click on the stars! </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-item hclass="ion-activated">
+      Accurracy
+      <star
+        (amountSetEmitter)="setRatingValueForMetric($event, 'accurracy')"
+        slot="end"
+      ></star>
+    </ion-item>
+
+    <ion-item hclass="ion-activated">
+      Usability
+      <star
+        (amountSetEmitter)="setRatingValueForMetric($event, 'usability')"
+        slot="end"
+      ></star>
+    </ion-item>
+    <ion-item hclass="ion-activated">
+      Pricing
+      <star
+        (amountSetEmitter)="setRatingValueForMetric($event, 'pricing')"
+        slot="end"
+      >
+      </star>
+    </ion-item>
+    <ion-item hclass="ion-activated">
+      Support
+      <star
+        (amountSetEmitter)="setRatingValueForMetric($event, 'support')"
+        slot="end"
+      >
+      </star>
+    </ion-item>
+    <ion-item hclass="ion-activated">
+      Features
+      <star
+        (amountSetEmitter)="setRatingValueForMetric($event, 'features')"
+        slot="end"
+      >
+      </star>
+    </ion-item>
+    <form [formGroup]="textForm">
+      <ion-item>
+        <ion-label position="stacked"
+          >Please leave a few honest words</ion-label
+        >
+        <ion-input formControlName="ratingText"></ion-input>
+      </ion-item>
+    </form>
+
+    <ion-item>
+      <ion-button fill="outline" (click)="confirmRating()" slot="end"
+        >Send Rating</ion-button
+      >
+    </ion-item>
+  </ion-card>
+</ion-content>

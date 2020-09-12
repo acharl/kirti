@@ -1,0 +1,19 @@
+<ng-container *ngIf="numFullStars >= 0 && numHollowStars >= 0">
+  <ng-container *ngFor="let i of [].constructor(numFullStars); let idx = index">
+    <ion-icon
+      name="star"
+      class="gold"
+      (click)="updateStars(idx, 'full')"
+    ></ion-icon>
+  </ng-container>
+
+  <ng-container
+    *ngFor="let i of [].constructor(numHollowStars); let idx = index"
+  >
+    <ion-icon
+      name="star-outline"
+      class="hollow"
+      (click)="updateStars(idx, 'hollow')"
+    ></ion-icon>
+  </ng-container>
+</ng-container>

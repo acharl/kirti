@@ -1,0 +1,91 @@
+<ion-content>
+  <ng-container
+    *ngIf="orbitDbServices !== undefined && orbitDbServices.length > 0"
+  >
+    <ion-row>
+      <ng-container *ngFor="let service of orbitDbServices">
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle
+                >{{service.service.providerName}}</ion-card-subtitle
+              >
+              <ion-card-subtitle color="secondary">
+                <star [stars]="getAverageRating(service)"></star>
+              </ion-card-subtitle>
+
+              <ion-card-title color="secondary"
+                >{{service.name}}
+              </ion-card-title>
+
+              <ion-item>
+                <ion-button
+                  fill="clear"
+                  (click)="viewAllRatingsOfService(service.service)"
+                  slot="start"
+                  >Show all ratings
+                </ion-button>
+              </ion-item>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-text color="dark">
+                <p class="font--weight__bold ion-no-margin ion-ion-text">
+                  {{service.service.description}}
+                  <!-- TODO -->
+                  <!-- <star
+                        [stars]="ratingAvgMap.get(service.service.serviceName)"
+                      ></star> -->
+                </p>
+              </ion-text>
+            </ion-card-content>
+
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-button
+                    fill="clear"
+                    (click)="showSlaDetails(service.service)"
+                    slot="start"
+                    >Show SLA Details</ion-button
+                  >
+                </ion-item>
+                <ion-item>
+                  <ion-button
+                    fill="clear"
+                    (click)="leaveRating(service.service)"
+                    slot="start"
+                    >Leave a Rating</ion-button
+                  >
+                </ion-item>
+                <ion-item>
+                  <ion-button
+                    fill="solid"
+                    color="success"
+                    (click)="purchase(service.service)"
+                    slot="end"
+                    >{{service.service.price}} ETH
+                  </ion-button>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ng-container>
+
+  <ng-container *ngIf="orbitDbServices !== undefined ">
+    <ng-container *ngIf="orbitDbServices.length === 0">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Nothing here ... </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          There are currently no protection services up for sale
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ng-container>
+</ion-content>
